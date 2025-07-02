@@ -31,20 +31,16 @@ class Second : AppCompatActivity() {
             R.drawable.el
         )
 
-        a= findViewById<EditText>(R.id.First).text.toString()
-        b=findViewById<EditText>(R.id.Second).text.toString()
+
 
 
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 imageView.setImageResource(figimg[position])
-                if(figimg[position].toString()=="0")
-                {
-
-                }
-                else{
-
+                when(position){
+                    0->findViewById<EditText>(R.id.Second).visibility=View.VISIBLE
+                    1 ->findViewById<EditText>(R.id.Second).visibility=View.INVISIBLE
                 }
             }
 
@@ -72,7 +68,8 @@ class Second : AppCompatActivity() {
 
         val intent = Intent(this, ThirdActivity::class.java).apply {
 
-
+            a= findViewById<EditText>(R.id.First).text.toString()
+            b=findViewById<EditText>(R.id.Second).text.toString()
             putExtra("KEY_A", a)
             putExtra("KEY_B", b)
 
